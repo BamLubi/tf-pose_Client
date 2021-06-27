@@ -46,21 +46,30 @@
 
 由于`tf-pose`项目中的卷积神经网络大量使用到了深度可分离卷积（Depthwise Separable Convolution），因此简单介绍一下此卷积。
 
+深度可分离卷积层将传统卷积分为了深度可分卷积（Depthwise Convolution）和逐点可分卷积（Pointwise Convolution）。深度可分卷积不同于传统卷积，在传统卷积中，每一个通道都可对应多个卷积核，因此输出的通道数可以与输入图像通道数不一致。并且输出图像的每一个通道都是由输入图像的每一个通道与卷积核卷积而来。但是，在深度可分卷积中，一个卷积核对应着一个通道，这个通道既是输入图像的通道又是输出图像的通道，因此输出的图像通道数与输入图像相同。传统卷积和深度可分卷积如下图所示：
 
-
-深度可分离卷积层将传统卷积分为了深度可分卷积（Depthwise Convolution）和逐点可分卷积（Pointwise Convolution）。深度可分卷积不同于传统卷积，在传统卷积中，每一个通道都可对应多个卷积核，因此输出的通道数可以与输入图像通道数不一致。并且输出图像的每一个通道都是由输入图像的每一个通道与卷积核卷积而来。但是，在深度可分卷积中，一个卷积核对应着一个通道，这个通道既是输入图像的通道又是输出图像的通道，因此输出的图像通道数与输入图像相同。下左图为传统卷积，下右图为深度可分卷积：
-
-<img src="img/传统卷积.png" alt="传统卷积" style="width:50%;" align="left"/><img src="img/深度可分离卷积.png" alt="深度可分离卷积" style="width:50%;"/>
-
-
+<img src="img/传统卷积.png" alt="传统卷积" style="zoom:33%;"/>
+<div style="text-align:center;">
+    传统卷积
+</div>
+<img src="img/深度可分离卷积.png" alt="深度可分离卷积" style="zoom:33%;"/>
+<div style="text-align:center;">
+    深度可分离卷积
+</div>
 
 逐点可分卷积与传统卷积又十分相似，不过卷积核的宽度和高度都为1，即是一个1×1×输入通道数×输出通道数的卷积，并且输出的通道数可以与输入通道数不一致。传统卷积的示意图如图3-1所示，逐点卷积的示意图如下图所示：
 
-<img src="img/逐点卷积.png" style="zoom:50%;" />
+<img src="img/逐点卷积.png" style="zoom:33%;" />
+<div style="text-align:center;">
+    逐点卷积
+</div>
 
 除了上述的两个卷积之外，深度可分离卷积层还包括批标准化层（BN: Batch Normalization）和激活层，在激活层中一般使用ReLU（Rectified Linear Unit，线性整流函数）作为激活函数。因此，一个深度可分离卷积层可以被表示为如下结构：
 
-<img src="img/深度可分离卷积层.png" style="zoom:50%;" />
+<img src="img/深度可分离卷积层.png" style="zoom:33%;" />
+<div style="text-align:center;">
+    深度可分离卷积层
+</div>
 
 ## 姿态识别
 
